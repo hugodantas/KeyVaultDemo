@@ -5,18 +5,12 @@ namespace KeyVaultDemo.Contexts
 {
     public class DemoContext : DbContext
     {
-        public DemoContext(DbContextOptions<DemoContext> options) : base(options)
-        {
-            Database.EnsureCreated();
-        }
-
-        public DbSet<Book> Books { get; set; }
+        public DemoContext(DbContextOptions<DemoContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Book>().HasKey(x => x.Id);
-            modelBuilder.Entity<Book>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<Book>().Property(x => x.Author).HasMaxLength(50);
+            modelBuilder.Entity<Movie>().HasKey(x => x.Id);
+            modelBuilder.Entity<Movie>().Property(x => x.Id).ValueGeneratedOnAdd();
         }
     }
 }
